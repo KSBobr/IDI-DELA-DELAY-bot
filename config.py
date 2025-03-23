@@ -14,8 +14,7 @@ db = mongo_client.IDdelbot
 celery_app = Celery(
     'tasks',
     broker=os.getenv("REDIS_URL", "redis://localhost:6379/0"),
-    backend=os.getenv("REDIS_URL", "redis://localhost:6379/0"),
-    include=['tasks']
+    include=['tasks']  # Явно указываем модуль с задачами
 )
 
 celery_app.conf.update(
